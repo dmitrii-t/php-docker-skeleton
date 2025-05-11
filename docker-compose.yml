@@ -1,0 +1,17 @@
+services:
+
+  php:
+    build:
+      dockerfile: docker/php/Dockerfile
+      context: .
+    volumes:
+      - ./:/app
+      - ./docker/php/opcache.dev.ini:/usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
+      - ./docker/php/xdebug.dev.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./docker/php/php.dev.ini:/usr/local/etc/php/conf.d/php.dev.ini
+    command:
+      - tail
+      - -f
+      - /dev/null
+    stop_grace_period: 0s
+

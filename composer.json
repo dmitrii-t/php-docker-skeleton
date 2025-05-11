@@ -1,0 +1,41 @@
+{
+    "require-dev": {
+        "php": ">=8.3",
+        "bamarni/composer-bin-plugin": "^1.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        },
+        "bamarni-bin": {
+            "bin-links": false,
+            "target-directory": "vendor-bin",
+            "forward-command": true
+        }
+
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\App\\": "tests/"
+        }
+    },
+    "scripts": {
+        "php-no-debug": "@php -dxedebug.mode=off",
+        "php-coverage": "@php -dxedebug.mode=coverage",
+
+        "cs-fix": "@php-no-debug vendor/bin/php-cs-fixer fix --using-cache=no --allow-risky=yes",
+        "cs-check": "@cs-fix --dry-run --diff",
+
+        "psalm": "@php-no-debug vendor/bin/psalm --no-cache --no-diff",
+
+        "test": "@php-no-debug vendor/bin/phpunit",
+        "test-ci": "@php-coverage vendor/bin/phpunit --do-not-cache-result --log-junit phpunit-report.xml --coverage-cobertura phpunit-coverage.xml --coverage-text --colors=never",
+
+        "composer-deps-analyze": "@php-no-debug vendor/bin/composer-dependency-analyser"
+    }
+}

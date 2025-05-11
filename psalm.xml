@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<psalm
+        totallyTyped="true"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://getpsalm.org/schema/config"
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+        findUnusedCode="false"
+>
+    <projectFiles>
+        <directory name="src"/>
+        <!-- directory name="tests"/ -->
+    </projectFiles>
+
+    <forbiddenFunctions>
+        <function name="exit" />
+        <function name="die" />
+        <function name="eval" />
+        <function name="shell_exec" />
+        <function name="echo" />
+        <function name="dd" />
+        <function name="debug_backtrace" />
+        <function name="dump" />
+        <function name="passthru" />
+        <function name="phpinfo" />
+        <function name="print_r" />
+        <function name="proc_open" />
+        <function name="system" />
+    </forbiddenFunctions>
+
+</psalm>
